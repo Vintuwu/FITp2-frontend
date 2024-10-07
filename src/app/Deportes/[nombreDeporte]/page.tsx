@@ -73,10 +73,6 @@ export default async function Deportes({
                   {noticia.createdAt && new Date(noticia.createdAt).toLocaleDateString()}
                 </p>
 
-                {/* Mostrar solo un fragmento del contenido */}
-                <div className="prose mb-4">
-                  <BlocksRenderer content={noticia.contenido}/>
-                </div>
                 {/* Botón para leer más */}
                 <a
                   href={`/Noticias/${noticia.titulo}`}

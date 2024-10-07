@@ -1,6 +1,5 @@
 import { NavBar } from "@/components/NavBar";
 import { getNoticia } from "@/lib/getNoticia";
-import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
@@ -22,11 +21,6 @@ export default async function UnaNoticia({ params }: {params: {nombreNoticia: st
                 alt={`Imagen de ${noticia.titulo}`} 
                 className="w-2/3 h-2/3 object-cover rounded-lg shadow-md mb-4" 
             />
-            <div className="prose prose-lg text-gray-700">
-                <ReactMarkdown>
-                    {noticia.contenido}
-                </ReactMarkdown>
-            </div>
             <div className="prose prose-lg text-gray-700">
                 <BlocksRenderer content={noticia.contenido} />
             </div>

@@ -1,5 +1,5 @@
 import { getNoticiaData } from "@/lib/getNoticiaData";
-import ReactMarkdown from "react-markdown";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Link from "next/link"; // Asegúrate de importar Link
 
 export const MostrarNoticias = async () => {
@@ -28,9 +28,8 @@ export const MostrarNoticias = async () => {
 
             {/* Mostrar solo un fragmento del contenido */}
             <div className="prose mb-4">
-              <ReactMarkdown>
-                {noticia.contenido.slice(0, 35) + "..."}
-              </ReactMarkdown>
+              <BlocksRenderer content={noticia.contenido}/>
+                
             </div>
 
             {/* Enlace al deporte */}

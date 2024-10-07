@@ -1,8 +1,8 @@
 import { NavBar } from "@/components/NavBar";
 import { getNoticiasInfo } from "@/lib/get-noticias-info";
 import { getDeporteInfo } from "@/lib/getDeporteData";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
 
 export async function generateStaticParams() {
   const data = await getDeporteInfo();
@@ -75,9 +75,7 @@ export default async function Deportes({
 
                 {/* Mostrar solo un fragmento del contenido */}
                 <div className="prose mb-4">
-                  <ReactMarkdown>
-                    {noticia.contenido.slice(0, 35) + '...'}
-                  </ReactMarkdown>
+                  <BlocksRenderer content={noticia.contenido}/>
                 </div>
                 {/* Botón para leer más */}
                 <a

@@ -1,10 +1,15 @@
 import { query } from "./strapi";
 
+const STRAPI_HOST = process.env.NEXT_PUBLIC_STRAPI_HOST
+
 export function getHomeInfo(){
-    return query('home').then(
+    return query("home?populate=cover").then(
         res => {
-            console.log(res)
-            return res
+            const {titulo, descripcion, cover} = res.data
+            const altText = cover.alternativeText
+            const image = `${STRAPI_HOST}/${cover.url}`
+            
+            return {titulo, descripcion, image, altText}
         }
     )
 }

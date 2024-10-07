@@ -2,10 +2,9 @@ import { getHomeInfo } from "@/lib/getHomeInfo";
 import Link from "next/link";
 
 export const Index = async () => {
-  const { titulo, descripcion, image, altText, altTextLogo, logoImage } = await getHomeInfo();
+  const { altTextLogo, logoImage } = await getHomeInfo();
+
   return (
-    <section className="bg-white py-10 md:mb-10">
-      <div className="container max-w-screen-xl mx-auto px-4">
         <nav className="flex-wrap lg:flex items-center">
           <div className="flex items-center mb-10 lg:mb-0">
             <img src={logoImage} alt={altTextLogo} className="max-h-16 max-w-16" />
@@ -22,23 +21,5 @@ export const Index = async () => {
             </li>
           </ul>
         </nav>
-
-        <div className="flex flex-col lg:flex-row justify-between space-x-20">
-          <div className="text-center lg:text-left mt-40">
-            <h1 className="font-semibold text-gray-900 text-3xl md:text-6xl leading-normal mb-6">
-              {titulo}
-            </h1>
-
-            <p className="font-light text-gray-400 text-md md:text-lg leading-normal mb-12">
-              {descripcion}
-            </p>
-          </div>
-
-          <div className="mt-24">
-            <img src={image} alt={altText} />
-          </div>
-        </div>
-      </div>
-    </section>
   );
 };

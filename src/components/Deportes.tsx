@@ -35,7 +35,7 @@ const Deportes: React.FC = () => {
           deportesInfo.map((deporte, index) => (
             <CardSport
               key={index}
-              title={deporte.name}
+              name={deporte.name}
               imageUrl={deporte.image.url}
             />
           ))

@@ -38,7 +38,7 @@ const Noticias: React.FC = () => {
             <CardNews
               key={index}
               title={noticia.titulo}
-              imageUrl={noticia.preview?.url || "#"} // Manejo de URL por si no hay imagen
+              imageUrl={noticia.preview?.url || "#"} 
             />
           ))
         ) : (

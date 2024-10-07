@@ -10,7 +10,6 @@ export function getHomeInfo(){
             const image = `${STRAPI_HOST}/${cover.url}`
             const altTextLogo= logo.alternativeText
             const logoImage = `${STRAPI_HOST}/${logo.url}`
-            
             return {titulo, descripcion, image, altText, altTextLogo, logoImage}
         }
     )

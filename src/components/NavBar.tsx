@@ -1,13 +1,15 @@
 import { getHomeInfo } from "@/lib/getHomeInfo";
 import Link from "next/link";
 
-export const Index = async () => {
-  const { altTextLogo, logoImage } = await getHomeInfo();
+export const Navbar = async () => {
+  const { altTextLogo, logoImage } = await getHomeInfo()
 
   return (
         <nav className="flex-wrap lg:flex items-center">
           <div className="flex items-center mb-10 lg:mb-0">
-            <img src={logoImage} alt={altTextLogo} className="max-h-16 max-w-16" />
+            <Link href={'/'}>
+              <img src={logoImage} alt={altTextLogo} className="max-h-16 max-w-16"/>
+            </Link>
           </div>
 
           <ul

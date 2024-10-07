@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/Navbar";
 import { getNoticiasInfo } from "@/lib/get-noticias-info";
 import { getDeporteInfo } from "@/lib/getDeporteData";
 import { notFound } from "next/navigation";
@@ -31,7 +32,8 @@ export default async function Deportes({
 
   return (
     
-    <div className="text-gray-800 p-8">
+    <div className="container max-w-screen-xl mx-auto px-4 text-gray-800 py-10">
+      <Navbar/>
       {/* Información del Deporte */}
       <div className="text-center mb-10">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{deporteValido.name}</h1>

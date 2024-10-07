@@ -1,52 +1,40 @@
-"use client";
-import { useEffect, useState } from "react";
-import { getNoticiasInfo } from "../lib/get-noticias-info";
-import { CardNews } from "./Card/CardNews";
+import { getNoticiaData } from "@/lib/getNoticiaData";
+import ReactMarkdown from "react-markdown";
 
-interface Noticia {
-  titulo: string;
-  contenido: string;
-  preview: {
-    url: string;
-  };
-}
-
-const Noticias: React.FC = () => {
-  const [noticiasInfo, setNoticiasInfo] = useState<Noticia[]>([]);
-  const [deporte] = useState<string>("Basquet"); // Valor por defecto para deporte
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getNoticiasInfo(deporte);
-      if (data && Array.isArray(data)) {
-        setNoticiasInfo(data);
-      }
-    };
-
-    fetchData();
-  }, [deporte]); // Dependencia: se ejecuta cuando cambie 'deporte'
-
+export const MostrarNoticias  = async () => {
+  const noticias = await getNoticiaData();
   return (
-    <div className="container max-w-screen-xl mx-auto px-4">
-      <h1 className="font-semibold text-gray-900 text-xl md:text-4xl text-center mb-16">
-        Noticias del municipio
-      </h1>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {noticias.map((noticia: any, index: number) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                  {/* Imagen de la noticia */}
+                  <img
+                    src={noticia.image}
+                    alt={`Preview de ${noticia.titulo}`}
+                    className="w-full h-48 object-cover rounded-md mb-4"
+                  />
+                  
+                  {/* Título y contenido */}
+                  <h3 className="text-lg font-bold mb-2">{noticia.titulo}</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {noticia.createdAt && new Date(noticia.createdAt).toLocaleDateString()}
+                  </p>
 
-      <div className=" gap-6 mb-8 row-auto">
-        {noticiasInfo.length > 0 ? (
-          noticiasInfo.map((noticia, index) => (
-            <CardNews
-              key={index}
-              title={noticia.titulo}
-              imageUrl={noticia.preview?.url || "#"} 
-            />
-          ))
-        ) : (
-          <p>Cargando datos...</p>
-        )}
+                  {/* Mostrar solo un fragmento del contenido */}
+                  <div className="prose mb-4">
+                    <ReactMarkdown>
+                      {noticia.contenido.slice(0, 35) + '...'}
+                    </ReactMarkdown>
+                  </div>
+
+                  {/* Botón para leer más */}
+                  <a href={`/Noticias/${noticia.titulo}`} className="mt-2 inline-block text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                    Leer más...
+                  </a>
+              </div>
+          ))}
       </div>
-    </div>
-  );
-};
-
-export default Noticias;
+    </>
+  )
+}

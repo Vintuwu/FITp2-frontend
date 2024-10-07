@@ -18,7 +18,7 @@ export const CardSport = ({ name, imageUrl }: CardProps) => {
         {name}
       </h2>
 
-      <button className="px-3 py-2 text-lg bg-blue-600 w-full font-bold rounded-lg hover:bg-blue-800 transition-all duration-200">
+      <button className="px-3 py-2 text-lg text-white bg-blue-600 w-full font-bold rounded-lg hover:bg-blue-800 transition-all duration-200">
         <Link href={`/Deportes/${name}`}>
           Ver las noticias de {name}
         </Link>

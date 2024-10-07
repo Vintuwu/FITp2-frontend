@@ -7,7 +7,7 @@ interface CardProps {
 
 export const CardSport = ({ name, imageUrl }: CardProps) => {
   return (
-    <div className="px-4 py-4 w-full border-2 border-gray-200 rounded-3xl">
+    <div className="px-4 py-4 w-full border-2 border-gray-300 bg-gray-100 rounded-3xl">
       <img
         src={`http://localhost:1337${imageUrl}`}
         alt={`Imagen deporte ${name}`}

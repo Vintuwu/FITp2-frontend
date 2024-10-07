@@ -25,9 +25,9 @@ const Deportes: React.FC = () => {
     fetchData();
   }, []);
   return (
-    <div className="container max-w-screen-xl mx-auto px-4">
+    <div className="container max-w-screen-xl mx-auto px-4 mt-10">
       <h1 className="font-semibold text-gray-900 text-xl md:text-4xl text-center mb-16">
-        Deportes del municipio
+        Deportes municipales
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 row-auto">

@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/Navbar";
+import { NavBar } from "@/components/NavBar";
 import { getNoticiasInfo } from "@/lib/get-noticias-info";
 import { getDeporteInfo } from "@/lib/getDeporteData";
 import { notFound } from "next/navigation";
@@ -32,8 +32,8 @@ export default async function Deportes({
 
   return (
     
-    <div className="container max-w-screen-xl mx-auto px-4 text-gray-800 py-10">
-      <Navbar/>
+    <div className="container max-w-screen-xl mx-auto px-4 text-gray-800 py-4">
+      <NavBar/>
       {/* Información del Deporte */}
       <div className="text-center mb-10">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{deporteValido.name}</h1>
@@ -81,7 +81,7 @@ export default async function Deportes({
                 </div>
                 {/* Botón para leer más */}
                 <a
-                  href={`/noticias/${noticia.id}`} // Cambia esto a la ruta de la noticia
+                  href={`/Noticias/${noticia.titulo}`}
                   className="mt-2 inline-block text-blue-600 hover:text-blue-800 text-sm font-semibold"
                 >
                   Leer más...
